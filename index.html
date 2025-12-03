@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image.prod.js"></script>
+
+    <!-- A-Frame -->
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+    <!-- MindAR -->
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image.prod.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+    <style>
+      body, html { margin: 0; overflow: hidden; }
+    </style>
   </head>
+
   <body>
     <a-scene
       mindar-image="imageTargetSrc: targets.mind"
@@ -16,16 +26,35 @@
       embedded
     >
       <a-assets>
+        <!-- Modelo GLB -->
         <a-asset-item id="modelo" src="modelo.glb"></a-asset-item>
       </a-assets>
 
+      <!-- Câmera MindAR -->
       <a-camera look-controls="enabled: false"></a-camera>
 
+      <!-- Conteúdo vinculado ao target 0 -->
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-gltf-model src="#modelo" position="0 0 0" rotation="0 0 0" scale="0.2 0.2 0.2"></a-gltf-model>
 
-        <a-plane color="blue" opacity="0.5" position="0 0 0" height="0.5" width="1"></a-plane>
+        <!-- Modelo 3D -->
+        <a-gltf-model
+          src="#modelo"
+          position="0 0 0"
+          rotation="0 0 0"
+          scale="0.3 0.3 0.3"
+        ></a-gltf-model>
+
+        <!-- Plane azul (teste) -->
+        <a-plane
+          color="blue"
+          opacity="0.5"
+          position="0 0 0"
+          height="0.5"
+          width="1"
+        ></a-plane>
+
       </a-entity>
+
     </a-scene>
   </body>
 </html>
